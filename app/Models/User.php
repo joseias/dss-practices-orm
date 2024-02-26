@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Authenticatable
@@ -48,15 +49,25 @@ class User extends Authenticatable
     /**
      * Get the phone associated with the user.
      */
-    public function phone(): HasOne
+    public function phone() : HasOne
     {
         return $this->hasOne(Phone::class);
     }
 
+
+    /**
+     * Get the posts associated with the user.
+     */
+    public function posts() : HasMany
+    {
+        return $this->hasMany(Post::class);
+    }
+
+
     /**
      * The roles that belong to the user.
      */
-    public function roles(): BelongsToMany
+    public function roles() : BelongsToMany
     {
         return $this->belongsToMany(Role::class);
     }

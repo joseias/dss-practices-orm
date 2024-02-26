@@ -5,8 +5,9 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
-class UserTableSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,18 +16,26 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
+        // clean the table
+        DB::table('users')->delete();
+
+        // creating fake users
+        $users = array();
         $total = 10;
 
         for ($i = 1; $i <= $total; $i++) {
-            
-            $user = ['name'=> fake()->name(),
-                     'email' => fake()->unique()->safeEmail(),
-                     'email_verified_at' => now(), 
-                     'remember_token' => Str::random(5),
-                     'password' => Str::random(10),
-                     'phone' => fake()->unique()->e164PhoneNumber()
-        ];
 
+            $user = [
+                'name' => fake()->name(),
+                'email' => fake()->unique()->safeEmail(),
+                'password' => Str::random(10),
+            ];
+
+            $users[] = $user;
         }
+
+        // insert into data base
+        DB::table('users')->insert($users);
+
     }
 }
