@@ -64,11 +64,4 @@ class User extends Authenticatable
     }
 
 
-    /**
-     * The roles that belong to the user.
-     */
-    public function roles() : BelongsToMany
-    {
-        return $this->belongsToMany(Role::class);
-    }
 }
