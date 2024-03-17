@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -31,10 +30,10 @@ class PostSeeder extends Seeder
             for ($i = 0; $i < $total; $i++) {
                 $post = [
                     'user_id' => $user->id,
-                    'date'=>fake()->date(),
-                    'content' =>fake()->realTextBetween(10, 40)
+                    'date' => fake()->date(),
+                    'content' => fake()->realTextBetween(10, 40)
                 ];
-                
+
                 $posts[] = $post;
 
             }

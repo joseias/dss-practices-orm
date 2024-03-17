@@ -64,4 +64,12 @@ class User extends Authenticatable
     }
 
 
+    /**
+     * Get the posts associated with the user.
+     */
+    public function roles() : BelongsToMany
+    {
+        return $this->belongsToMany(Role::class);
+    }
+
 }

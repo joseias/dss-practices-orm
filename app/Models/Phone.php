@@ -24,7 +24,7 @@ class Phone extends Model
     /**
      * Get the user that owns the phone.
      */
-    public function user(): BelongsTo
+    public function user() : BelongsTo
     {
         return $this->belongsTo(User::class);
     }

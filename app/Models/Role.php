@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Post extends Model
+class Role extends Model
 {
     use HasFactory;
 
@@ -16,15 +16,16 @@ class Post extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'content'
+        'name',
+        'description'
     ];
 
 
     /**
-     * Get the user of the blog post.
+     * Get the users that have the role
      */
-    public function user() : BelongsTo
+    public function user() : BelongsToMany
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsToMany(User::class);
     }
 }
