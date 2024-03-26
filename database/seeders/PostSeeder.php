@@ -31,6 +31,7 @@ class PostSeeder extends Seeder
                 $post = [
                     'user_id' => $user->id,
                     'date' => fake()->date(),
+                    'title' => fake()->realTextBetween(5, 10),
                     'content' => fake()->realTextBetween(10, 40)
                 ];
 

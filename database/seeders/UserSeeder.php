@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
 
         // creating fake users
         $users = array();
-        $total = 10;
+        $total = 15;
 
         for ($i = 1; $i <= $total; $i++) {
 
